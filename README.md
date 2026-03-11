@@ -1,6 +1,6 @@
-# tbrw – Tree-Based Random Walk
+# tbrw – Tree Builder Random Walk
 
-A minimal Python library for simulating **Tree-Based Random Walks** (TBRW):
+A minimal Python library for simulating **Tree Builder Random Walk** (TBRW):
 a stochastic process that simultaneously grows a random tree and walks on it.
 
 At each step:
