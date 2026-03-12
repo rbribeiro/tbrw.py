@@ -1,6 +1,6 @@
 """Tests for the tbrw package."""
 import pytest
-
+from itertools import accumulate
 from tbrw import TBRW
 
 
@@ -26,6 +26,12 @@ def test_invalid_p_raises():
         TBRW(p=1.5)
     with pytest.raises(ValueError):
         TBRW(p=-0.1)
+    with pytest.raises(ValueError):
+        TBRW(p=[])
+    with pytest.raises(ValueError):
+        TBRW(p=[0.1,-1])
+    with pytest.raises(TypeError):
+        TBRW(p="a")
 
 
 # ---------------------------------------------------------------------------
@@ -44,6 +50,18 @@ def test_p0_never_grows():
     model = TBRW(p=0.0, seed=7)
     model.run(steps=20)
     assert model.num_nodes == 1
+
+def test_alternate_sequence():
+    model = TBRW(p = [0,1])
+    steps = 100
+    model.run(steps = steps)
+    assert model.num_nodes == steps // 2 + 1
+
+def test_distance_trajectory_is_always_positive():
+    model = TBRW(p = 1)
+    model.run(steps = 100)
+    distances = list(accumulate(model.steps_trajectory))
+    assert all( d >= 0 for d in distances)
 
 
 def test_run_returns_adj_list():

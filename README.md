@@ -1,4 +1,4 @@
-# tbrw – Tree Builder Random Walk
+# tbrw.py – Tree Builder Random Walk
 
 A minimal Python library for simulating **Tree Builder Random Walk** (TBRW):
 a stochastic process that simultaneously grows a random tree and walks on it.
@@ -17,7 +17,7 @@ pip install tbrw
 Or install directly from source:
 
 ```bash
-git clone https://github.com/yourusername/tbrw.git
+git clone https://github.com/rbribeiro/tbrw.py.git
 cd tbrw
 pip install -e .
 ```
@@ -47,7 +47,7 @@ print(f"Walker is at node:     {model.walker}")
 
 | Method | Description |
 |--------|-------------|
-| `step()` | Perform a single walk step. |
+| `step()` | Perform a single tbrw step. |
 | `run(steps=10)` | Perform `steps` steps; returns the adjacency list. |
 | `reset(seed=None)` | Reset to the initial single-node state. |
 
