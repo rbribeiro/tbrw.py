@@ -5,10 +5,13 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tbrw"
 version = "0.1.0"
-description = "Tree-Based Random Walk – grow and explore random trees."
+description = "Tree Builder Random Walk – grow and explore random trees."
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.9"
+dependencies = [
+    "networkx>=3.0",
+]
 keywords = ["random walk", "random tree", "graph", "stochastic"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -23,8 +26,8 @@ classifiers = [
 ]
 
 [project.urls]
-"Source" = "https://github.com/yourusername/tbrw"
-"Bug Tracker" = "https://github.com/yourusername/tbrw/issues"
+"Source" = "https://github.com/rbribeiro/tbrw.py"
+"Bug Tracker" = "https://github.com/rbribeiro/tbrw.py/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
