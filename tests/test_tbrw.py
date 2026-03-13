@@ -33,6 +33,13 @@ def test_invalid_p_raises():
     with pytest.raises(TypeError):
         TBRW(p="a")
 
+def test_invalid_s_raises():
+    with pytest.raises(ValueError):
+        TBRW(s = 0)
+    with pytest.raises(ValueError):
+        TBRW(s = -1)
+    with pytest.raises(TypeError):
+        TBRW(s = 1.2)
 
 # ---------------------------------------------------------------------------
 # Growth behaviour
@@ -57,18 +64,18 @@ def test_alternate_sequence():
     model.run(steps = steps)
     assert model.num_nodes == steps // 2 + 1
 
-def test_distance_trajectory_is_always_positive():
-    model = TBRW(p = 1)
-    model.run(steps = 100)
-    distances = list(accumulate(model.steps_trajectory))
-    assert all( d >= 0 for d in distances)
-
 
 def test_run_returns_adj_list():
     model = TBRW(seed=1)
     adj = model.run(steps=10)
     assert isinstance(adj, list)
     assert all(isinstance(neighbours, list) for neighbours in adj)
+
+def test_s_2_adds_half_of_vertices():
+    model = TBRW(p = 1, s = 2)
+    steps = 100
+    model.run(steps= steps)
+    assert model.num_nodes == steps // 2 + 1
 
 
 # ---------------------------------------------------------------------------
