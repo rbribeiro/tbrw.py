@@ -20,3 +20,11 @@ def validate_probability(p: float | list[float]) -> float | list[float]:
         return values
 
     raise TypeError("p must be either a float or a list of float between 0 and 1")
+
+
+def validate_steps(s:int) -> int:
+    if not isinstance(s,int):
+        raise TypeError(f"s must be a positive integer. Provided s={s}")
+    elif s <= 0:
+        raise ValueError(f"s must be a positive integer. Provided s={s}")
+    return s
