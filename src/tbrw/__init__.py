@@ -1,4 +1,4 @@
-"""tbrw – Tree-Based Random Walk.
+"""tbrw.py - Tree Builder Random Walk.
 
 Exposes the main :class:`TBRW` class at the package level so users can
 simply write::
